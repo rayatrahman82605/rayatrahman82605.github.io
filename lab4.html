@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordering Website</title>
+    <script>
+        window.onload = function() {
+
+            // 1. Alert when website opens
+            alert("Welcome to the store!");
+
+            // 2. Prompt customer for their information
+            let customerName = prompt("Please enter your name:");
+            let item = prompt("What item would you like to order?");
+            let quantity = prompt("How many would you like? (1-99)");
+
+            // Convert quantity into number (just in case)
+            quantity = Number(quantity);
+
+            // 3. Create greeting based on current time
+            let now = new Date();
+            let hour = now.getHours();
+            let greeting = "";
+
+            if (hour < 12) {
+                greeting = "Good Morning";
+            } else if (hour < 18) {
+                greeting = "Good Afternoon";
+            } else {
+                greeting = "Good Evening";
+            }
+
+            // 4. Calculate arrival date (7 days from now)
+            let arrival = new Date();
+            arrival.setDate(arrival.getDate() + 7);
+
+            let arrivalDate = arrival.toDateString();
+
+            // 5. Display all information on the webpage
+            document.getElementById("greeting").innerHTML =
+                `${greeting} ${customerName}, Thank you for Ordering!`;
+
+            document.getElementById("orderDetails").innerHTML =
+                `You ordered <strong>${quantity}</strong> ${item}(s).`;
+
+            document.getElementById("arrivalDate").innerHTML =
+                `Your order will arrive on: <strong>${arrivalDate}</strong>`;
+        }
+    </script>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1 id="greeting"></h1>
+    <p id="orderDetails"></p>
+    <p id="arrivalDate"></p>
+
+</body>
+</html>
